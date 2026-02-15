@@ -8,6 +8,13 @@ message User {
   string email = 2;
 }
 
+message GetUserRequest{
+  uint32 id = 1;
+}
+message GetUserResponse{
+  User user = 1;
+}
+
 // Запрос на создание
 message CreateUserRequest {
   string email = 1;
@@ -39,7 +46,7 @@ message DeleteUserResponse{
 
 service UserService {
   rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
-  rpc GetUser    (User)              returns (User);
+  rpc GetUser    (GetUserRequest)              returns (GetUserResponse);
   rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
   rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
   rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
